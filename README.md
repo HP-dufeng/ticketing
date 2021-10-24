@@ -1,3 +1,4 @@
+### The project was designed to train the employees of a software company, using my past coding experience
 
 ### Technologies:
 * microservice patterns
@@ -22,3 +23,5 @@
 * skaffold
 * kind
 * ubuntu
+
+> reamrk: due to hte recent upgrade failure of ubuntu system, my system does not install chinese input method, so I can only use letters to write this readme for the time being, sorry.
