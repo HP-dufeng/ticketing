@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth
+    driver-class-name: org.postgresql.Driver
+    username: feng
+    password: 1234
+  liquibase:
+    change-log: classpath:cloud/fengdu/ticketing/auth/db/liquibase/changelog-master.xml
+mybatis:
+  config-location: classpath:cloud/fengdu/ticketing/auth/db/mapping/mappings.xml
+
+jwt:
+  secret-key: 1234567
+  token-expiration-after-days: 14

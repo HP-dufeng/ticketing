@@ -1,0 +1,13 @@
+target
+*.iml
+*.ipr
+*.iws
+.idea
+.classpath
+.project
+.settings
+.DS_Store
+.vscode
+.apt_generated
+.apt_generated_tests
+/modules/**/bin

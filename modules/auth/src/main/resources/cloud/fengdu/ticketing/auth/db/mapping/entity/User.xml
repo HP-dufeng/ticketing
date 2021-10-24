@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cloud.fengdu.ticketing.auth.domain.repository.UserRepository">
+
+    <resultMap id="modelResultMap" type="cloud.fengdu.ticketing.auth.domain.entity.User">
+        <id property="id" column="id" jdbcType="BIGINT" />
+        <result property="emailAddress" column="email_address" jdbcType="VARCHAR" />
+        <result property="password" column="password" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <select id="findByEmailAddress" parameterType="string" resultMap="modelResultMap">
+        select * from TK_USER where email_address = #{emailAddress, jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insert" parameterType="cloud.fengdu.ticketing.auth.domain.entity.User">
+        insert into TK_USER (
+            email_address,
+            password
+        ) 
+         values (
+            #{emailAddress, jdbcType=VARCHAR},
+            #{password, jdbcType=VARCHAR}  
+          )
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2beta24
+kind: Config
+deploy:
+  kustomize:
+    paths:
+      - ./k8s
+build:
+  local:
+    push: false
+  artifacts:
+    - image: fengdu/auth
+      context: ./
+      jib:
+        project: modules/auth
+        fromImage: docker://eclipse-temurin:17
