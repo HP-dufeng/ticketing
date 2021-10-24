@@ -24,4 +24,4 @@
 * kind
 * ubuntu
 
-> reamrk: due to hte recent upgrade failure of ubuntu system, my system does not install chinese input method, so I can only use letters to write this readme for the time being, sorry.
+> reamrk: due to the recent upgrade failure of ubuntu system, my system does not install chinese input method, so I can only use letters to write this readme for the time being, sorry.
