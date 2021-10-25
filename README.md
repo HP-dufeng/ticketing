@@ -19,9 +19,10 @@
 * reactjs
 
 ### Develop tools:
+* ubuntu
 * vscode
 * skaffold
 * kind
-* ubuntu
+* kustomize
 
 > reamrk: due to the recent upgrade failure of ubuntu system, my system does not install chinese input method, so I can only use letters to write this readme for the time being, sorry.
