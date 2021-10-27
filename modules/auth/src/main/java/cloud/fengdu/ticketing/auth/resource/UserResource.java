@@ -46,6 +46,18 @@ public class UserResource {
         return ResponseEntity.ok(userModel);
     }
 
+    @PostMapping("/signout")
+    public ResponseEntity<UserModel> signout(HttpServletRequest request, HttpServletResponse response) {
+
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null)
+            for (Cookie cookie : cookies) {
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+            }
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/signup")
     public ResponseEntity<Void> signup(@Valid @RequestBody SignupRequestDto dto) {
         URI location = URI
@@ -56,7 +68,7 @@ public class UserResource {
         user.setPassword(dto.getPassword());
         try {
             userService.saveUser(user);
-            
+
         } catch (DuplicateKeyException e) {
             throw new ConflictingRequestException("User existed");
         }

@@ -5,7 +5,13 @@ secretGenerator:
 - name: jwt-secret
   literals:
   - jwt_secret_key=123456
+- name: ticketing-tls-secret
+  type: kubernetes.io/tls
+  files:
+  - tls.crt
+  - tls.key
 resources:
   - auth-postgres-depl.yaml
   - auth-depl.yaml
+  - frontend-depl.yaml
   - ingress-svc.yaml

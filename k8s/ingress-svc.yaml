@@ -5,14 +5,26 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: ambassador
 spec:
+  tls:
+  - hosts:
+      - ticketing.fengdu.cloud
+    secretName: ticketing-tls-secret
   rules:
-  - host: ticketing.dev
+  - host: ticketing.fengdu.cloud
     http:
       paths:
-      - pathType: Prefix
-        path: "/"
+      - path: /auth/
+        pathType: Prefix
         backend:
           service:
             name: auth-svc
             port:
               number: 8080
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-svc
+            port:
+              number: 3000
+---

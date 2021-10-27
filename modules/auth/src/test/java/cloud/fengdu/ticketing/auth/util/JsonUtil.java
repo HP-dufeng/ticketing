@@ -12,5 +12,11 @@ public class JsonUtil {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         return mapper.writeValueAsBytes(object);
     }
+
+    public static String toJsonString(Object object) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return mapper.writeValueAsString(object);
+    }
     
 }

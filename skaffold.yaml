@@ -13,3 +13,11 @@ build:
       jib:
         project: modules/auth
         fromImage: docker://eclipse-temurin:17
+    - image: fengdu/frontend
+      context: ./modules/frontend
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
