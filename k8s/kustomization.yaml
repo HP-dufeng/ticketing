@@ -2,6 +2,9 @@ secretGenerator:
 - name: auth-db-secret
   literals:
   - password=123456
+- name: tickets-db-secret
+  literals:
+  - password=123456
 - name: jwt-secret
   literals:
   - jwt_secret_key=123456

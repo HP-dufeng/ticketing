@@ -13,6 +13,11 @@ build:
       jib:
         project: modules/auth
         fromImage: docker://eclipse-temurin:17
+    - image: fengdu/tickets
+      context: ./
+      jib:
+        project: modules/tickets
+        fromImage: docker://eclipse-temurin:17
     - image: fengdu/frontend
       context: ./modules/frontend
       docker:

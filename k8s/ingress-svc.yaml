@@ -20,6 +20,13 @@ spec:
             name: auth-svc
             port:
               number: 8080
+      - path: /tickets/
+        pathType: Prefix
+        backend:
+          service:
+            name: tickets-svc
+            port:
+              number: 8080
       - path: /
         pathType: Prefix
         backend:
