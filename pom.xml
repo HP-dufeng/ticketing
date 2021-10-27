@@ -12,6 +12,7 @@
 
   <modules>
     <module>modules/auth</module>
+    <module>modules/tickets</module>
     <module>modules/common</module>
   </modules>
 
