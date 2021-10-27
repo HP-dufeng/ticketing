@@ -12,3 +12,4 @@ target
 .apt_generated_tests
 /modules/**/bin
 node_modules
+.next
