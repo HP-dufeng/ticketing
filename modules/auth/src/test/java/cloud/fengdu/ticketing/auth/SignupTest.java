@@ -7,7 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.jupiter.api.Test;
 
 import cloud.fengdu.ticketing.auth.resource.model.SignupRequestDto;
-import cloud.fengdu.ticketing.auth.util.JsonUtil;
+import cloud.fengdu.ticketing.common.util.JsonUtil;
 
 
 public class SignupTest extends Bootstrapper {

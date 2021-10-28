@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import cloud.fengdu.ticketing.common.service.exception.BaseModelerRestException;
 import cloud.fengdu.ticketing.common.service.exception.ConflictingRequestException;
 import cloud.fengdu.ticketing.common.service.exception.ErrorInfo;
+import cloud.fengdu.ticketing.common.service.exception.NotPermittedException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -40,6 +41,13 @@ public class RestExceptionHandlerAdvice {
     @ExceptionHandler(ConflictingRequestException.class)
     @ResponseBody
     public ErrorInfo handleConflict(ConflictingRequestException e) {
+        return createInfoFromException(e, e.getMessageKey());
+    }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN) // 403
+    @ExceptionHandler(NotPermittedException.class)
+    @ResponseBody
+    public ErrorInfo handleNoPermission(NotPermittedException e) {
         return createInfoFromException(e, e.getMessageKey());
     }
 

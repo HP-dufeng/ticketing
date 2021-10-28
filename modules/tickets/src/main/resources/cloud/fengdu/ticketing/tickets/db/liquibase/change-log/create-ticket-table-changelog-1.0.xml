@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog   
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"   
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"					  
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+  http://www.liquibase.org/xml/ns/pro 
+  http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">   
+  
+  <changeSet id="202110280722" author="feng">
+		<createTable tableName="TK_TICKET">
+			<column name="id" type="bigint">
+				<constraints primaryKey="true" primaryKeyName="ticket_id_pk" />
+			</column>
+			<column name="title" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="price" type="double">
+				<constraints nullable="false" />
+      		</column>
+			  <column name="user_email" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+		
+		<addAutoIncrement tableName="TK_TICKET" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
+	</changeSet>
+</databaseChangeLog> 

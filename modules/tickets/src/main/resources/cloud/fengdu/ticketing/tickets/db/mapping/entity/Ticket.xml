@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cloud.fengdu.ticketing.tickets.domain.repository.TicketRepository">
+
+    <resultMap id="modelResultMap" type="cloud.fengdu.ticketing.tickets.domain.entity.Ticket">
+        <id property="id" column="id" jdbcType="BIGINT" />
+        <result property="title" column="title" jdbcType="VARCHAR" />
+        <result property="price" column="price" jdbcType="DOUBLE" />
+        <result property="userEmail" column="user_email" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <select id="findById" parameterType="long" resultMap="modelResultMap">
+        select * from TK_TICKET where id = #{entityId, jdbcType=BIGINT}
+    </select>
+
+    <select id="getAll" resultMap="modelResultMap">
+        select * from TK_TICKET
+    </select>
+
+    <insert id="create" parameterType="cloud.fengdu.ticketing.tickets.domain.entity.Ticket">
+        insert into TK_TICKET (
+            title,
+            price,
+            user_email
+        ) 
+         values (
+            #{title, jdbcType=VARCHAR},
+            #{price, jdbcType=DOUBLE},
+            #{userEmail, jdbcType=VARCHAR}
+          )
+    </insert>
+
+
+</mapper>

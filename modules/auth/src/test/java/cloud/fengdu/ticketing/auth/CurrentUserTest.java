@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 
 import cloud.fengdu.ticketing.auth.resource.model.SignupRequestDto;
 import cloud.fengdu.ticketing.auth.resource.model.UserModel;
-import cloud.fengdu.ticketing.auth.util.JsonUtil;
+import cloud.fengdu.ticketing.common.util.JsonUtil;
 
 public class CurrentUserTest extends Bootstrapper {
     
