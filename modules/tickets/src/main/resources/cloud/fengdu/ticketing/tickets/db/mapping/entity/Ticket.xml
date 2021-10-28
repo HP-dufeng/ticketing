@@ -33,5 +33,11 @@
           )
     </insert>
 
+    <update id="update" parameterType="cloud.fengdu.ticketing.tickets.domain.entity.Ticket">
+        update TK_TICKET
+        <set> title = #{title, jdbcType=VARCHAR}, price = #{price, jdbcType=DOUBLE}</set>
+        where id = #{id, jdbcType=BIGINT}
+    </update>
+
 
 </mapper>

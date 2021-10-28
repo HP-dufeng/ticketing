@@ -88,4 +88,13 @@ public class Bootstrapper {
         return new Cookie("jwt", access_token);
 
     }
+
+    protected Cookie signin(String email) {
+        String username = email;
+        Algorithm algorithm =jwtConfig.getAlgorithm();
+        String access_token = JWT.create().withSubject(username).sign(algorithm);
+
+        return new Cookie("jwt", access_token);
+
+    }
 }

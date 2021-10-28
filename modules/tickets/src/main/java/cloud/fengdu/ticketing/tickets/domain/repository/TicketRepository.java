@@ -11,6 +11,8 @@ public interface TicketRepository {
     
     void create(Ticket entity);
 
+    void update(Ticket entity);
+
     Ticket findById(long entityId);
 
     List<Ticket> getAll();

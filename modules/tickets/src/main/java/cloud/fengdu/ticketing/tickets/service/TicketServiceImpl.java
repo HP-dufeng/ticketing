@@ -30,5 +30,11 @@ public class TicketServiceImpl implements TicketService {
     public List<Ticket> getAll() {
         return ticketRepository.getAll();
     }
+
+    @Override
+    public void update(Ticket ticket) {
+        ticketRepository.update(ticket);
+        
+    }
     
 }

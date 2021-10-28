@@ -12,14 +12,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TicketModel {
-
-    private Long id;
-    private String title;
-    private double price;
-    private String userEmail;
+public class CreateTicketRequestDto {
     
+    @NotEmpty
+    @NotNull(message = "Title is required")
+    private String title;
+
+    @DecimalMin(value = "1.0", message = "Price must be greater than 1")
+    private double price;
 }

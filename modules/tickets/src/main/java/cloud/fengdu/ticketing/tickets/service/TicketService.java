@@ -13,4 +13,6 @@ public interface TicketService {
     Ticket findById(long entityId);
 
     List<Ticket> getAll();
+
+    void update(Ticket ticket);
 }
