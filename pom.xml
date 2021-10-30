@@ -14,6 +14,8 @@
     <module>modules/auth</module>
     <module>modules/tickets</module>
     <module>modules/common</module>
+    <module>modules/event-streaming</module>
+    <module>modules/infra/event-registry</module>
   </modules>
 
 
@@ -22,7 +24,9 @@
 
     <spring.boot.version>2.5.5</spring.boot.version>
     <mybatis.spring.boot.starter.version>2.2.0</mybatis.spring.boot.starter.version>
-    <java-jwt.version>3.18.2</java-jwt.version>
+    <com.auth0.java.jwt.version>3.18.2</com.auth0.java.jwt.version>
+    <io.nats.jnats>2.13.0</io.nats.jnats>
+    <com.google.code.gson.version>2.8.8</com.google.code.gson.version>
   </properties>
 
   <dependencyManagement>
@@ -48,12 +52,39 @@
       <dependency>
         <groupId>com.auth0</groupId>
         <artifactId>java-jwt</artifactId>
-        <version>${java-jwt.version}</version>
+        <version>${com.auth0.java.jwt.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>io.nats</groupId>
+        <artifactId>jnats</artifactId>
+        <version>${io.nats.jnats}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.nats</groupId>
+      <artifactId>jnats-server-runner</artifactId>
+      <version>1.0.8</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${com.google.code.gson.version}</version>
+    </dependency>
 
       <dependency>
         <groupId>cloud.fengdu</groupId>
         <artifactId>common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cloud.fengdu</groupId>
+        <artifactId>event-registry</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cloud.fengdu</groupId>
+        <artifactId>event-streaming</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
@@ -65,7 +96,18 @@
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
+
   </dependencies>
+
+  <!-- <repositories>
+    <repository>
+        <id>sonatype releases</id>
+        <url>https://oss.sonatype.org/content/repositories/releases/</url>
+        <releases>
+           <enabled>true</enabled>
+        </releases>
+    </repository>
+</repositories> -->
 
   <build>
 
@@ -91,6 +133,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
+        <configuration>
+          <environmentVariables>
+            <nats_server_path>${project.parent.basedir}/nats-server</nats_server_path>
+          </environmentVariables>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

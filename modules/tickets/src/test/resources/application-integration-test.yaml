@@ -11,3 +11,8 @@ mybatis:
 
 jwt:
   secret-key: 1234567
+
+nats: 
+  spring: 
+    server: nats://localhost:4222
+    connection-name: tikceting

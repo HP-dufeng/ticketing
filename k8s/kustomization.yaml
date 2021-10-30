@@ -14,7 +14,10 @@ secretGenerator:
   - tls.crt
   - tls.key
 resources:
+  - ingress-svc.yaml
+  - nats-depl.yaml
   - auth-postgres-depl.yaml
   - auth-depl.yaml
+  - tickets-postgres-depl.yaml
+  - tickets-depl.yaml
   - frontend-depl.yaml
-  - ingress-svc.yaml

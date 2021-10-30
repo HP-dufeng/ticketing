@@ -1,5 +1,6 @@
 package cloud.fengdu.ticketing.tickets;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +30,9 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import cloud.fengdu.ticketing.eventregistry.NatsTestServer;
 import cloud.fengdu.ticketing.tickets.security.JwtConfig;
+import io.nats.client.Options;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -42,6 +47,18 @@ public class Bootstrapper {
     
     @Autowired
     private DataSource dataSource;
+
+    private static NatsTestServer natsTestServer;
+
+    @BeforeAll
+    static void setup() throws IOException {
+        natsTestServer = new NatsTestServer(Options.DEFAULT_PORT, false, true);
+    }
+
+    @AfterAll 
+    static void shutdown() throws InterruptedException {
+        natsTestServer.close();
+    }
 
     @AfterEach
     public void cleanupDatabase() throws SQLException {

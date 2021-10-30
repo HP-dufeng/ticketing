@@ -34,6 +34,12 @@ spec:
               secretKeyRef:
                 name: jwt-secret
                 key: jwt_secret_key
+          - name: NATS_SPRING_SERVER
+            value: nats://nats-svc:4222
+          - name: NATS_SPRING_CONNECTION_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
 ---
 apiVersion: v1
 kind: Service

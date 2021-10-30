@@ -20,7 +20,7 @@
         select * from TK_TICKET
     </select>
 
-    <insert id="create" parameterType="cloud.fengdu.ticketing.tickets.domain.entity.Ticket">
+    <insert id="create" parameterType="cloud.fengdu.ticketing.tickets.domain.entity.Ticket" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into TK_TICKET (
             title,
             price,

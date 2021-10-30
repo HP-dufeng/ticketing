@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import cloud.fengdu.ticketing.tickets.domain.entity.Ticket;
 import cloud.fengdu.ticketing.tickets.domain.repository.TicketRepository;
+import io.nats.client.Options;
 import cloud.fengdu.ticketing.common.util.JsonUtil;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -110,6 +111,7 @@ public class CreateTicketTest extends Bootstrapper {
 
     @Test
     public void creates_ticket_with_valid_inputs() throws Exception {
+
         List<Ticket> tickets = ticketRepository.getAll();
         assertTrue(tickets.size() == 0);
         

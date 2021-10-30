@@ -69,6 +69,10 @@
 			<groupId>cloud.fengdu</groupId>
 			<artifactId>common</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>cloud.fengdu</groupId>
+			<artifactId>event-streaming</artifactId>
+		  </dependency>
 	</dependencies>
 
 </project>

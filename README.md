@@ -2,7 +2,7 @@
 
 ### Technologies:
 * microservice patterns
-* event stream
+* event streaming
 * eventstromming
 * ddd
 * k8s
