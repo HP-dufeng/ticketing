@@ -16,6 +16,7 @@
     <module>modules/common</module>
     <module>modules/event-streaming</module>
     <module>modules/infra/event-registry</module>
+    <module>modules/infra/event-registry-spring-cloud-stream-binder</module>
   </modules>
 
 
@@ -24,6 +25,8 @@
 
     <spring.boot.version>2.5.5</spring.boot.version>
     <mybatis.spring.boot.starter.version>2.2.0</mybatis.spring.boot.starter.version>
+    <spring-cloud-build.version>3.0.3</spring-cloud-build.version>
+    <spring-cloud-stream.version>3.1.3</spring-cloud-stream.version>
     <com.auth0.java.jwt.version>3.18.2</com.auth0.java.jwt.version>
     <io.nats.jnats>2.13.0</io.nats.jnats>
     <com.google.code.gson.version>2.8.8</com.google.code.gson.version>
@@ -39,6 +42,31 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-build-dependencies</artifactId>
+				<version>${spring-cloud-build.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+      <dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-stream</artifactId>
+				<version>${spring-cloud-stream.version}</version>
+			</dependency>
+      <dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-stream-binder-test</artifactId>
+				<version>${spring-cloud-stream.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-stream-test-support-internal</artifactId>
+				<version>${spring-cloud-stream.version}</version>
+				<scope>test</scope>
+			</dependency>
+
       <dependency>
         <groupId>org.mybatis.spring.boot</groupId>
         <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -80,6 +108,11 @@
       <dependency>
         <groupId>cloud.fengdu</groupId>
         <artifactId>event-registry</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cloud.fengdu</groupId>
+        <artifactId>event-registry-spring-cloud-stream-binder</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

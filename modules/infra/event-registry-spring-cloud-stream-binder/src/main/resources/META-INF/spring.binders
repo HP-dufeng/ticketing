@@ -1,0 +1,2 @@
+nats:\
+cloud.fengdu.ticketing.eventregistry.spring.cloud.stream.binder.NatsChannelBinderConfiguration

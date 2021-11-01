@@ -18,26 +18,19 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * {@link EnableAutoConfiguration Auto-configuration} for NATS.
+ */
 @ConditionalOnClass({ Connection.class })
 @EnableConfigurationProperties(NatsProperties.class)
-
+/**
+ * NatsAutoConfiguration will create a NATS connection from an instance of NatsProperties.
+ * A default connection and error handler is provided with basic logging.
+ */
 public class NatsAutoConfiguration {
+	private static final Log logger = LogFactory.getLog(NatsAutoConfiguration.class);
 
-    private static final Log logger = LogFactory.getLog(NatsAutoConfiguration.class);
-
-	@Autowired(required = false)
-	/**
-	 * A custom connection listener, otherwise a simple logging default is used.
-	 */
-	private ConnectionListener connectionListener;
-
-	@Autowired(required = false)
-	/**
-	 * A custom error listener, otherwise a simple logging default is used.
-	 */
-	private ErrorListener errorListener;
-    
-    @Bean
+	@Bean
 	@ConditionalOnMissingBean
 	/**
 	 * @return NATS connection created with the provided properties. If no server URL is set the method will return null.
@@ -57,36 +50,28 @@ public class NatsAutoConfiguration {
 			logger.info("autoconnecting to NATS with properties - " + properties);
 			Options.Builder builder = properties.toOptionsBuilder();
 
-			if(connectionListener != null) {
-				builder = builder.connectionListener(connectionListener);
-			} else {
-				builder = builder.connectionListener(new ConnectionListener() {
-					public void connectionEvent(Connection conn, Events type) {
-							logger.info("NATS connection status changed " + type);
-					}
-				});
-			}
+			builder = builder.connectionListener(new ConnectionListener() {
+				public void connectionEvent(Connection conn, Events type) {
+						logger.info("NATS connection status changed " + type);
+				}
+			});
 
-			if(errorListener != null) {
-				builder = builder.errorListener(errorListener);
-			}else {
-				builder = builder.errorListener(new ErrorListener() {
-					@Override
-					public void slowConsumerDetected(Connection conn, Consumer consumer) {
-						logger.info("NATS connection slow consumer detected");
-					}
-	
-					@Override
-					public void exceptionOccurred(Connection conn, Exception exp) {
-						logger.error("NATS connection exception occurred", exp);
-					}
-	
-					@Override
-					public void errorOccurred(Connection conn, String error) {
-						logger.info("NATS connection error occurred " + error);
-					}
-				});
-			}
+			builder = builder.errorListener(new ErrorListener() {
+				@Override
+				public void slowConsumerDetected(Connection conn, Consumer consumer) {
+					logger.info("NATS connection slow consumer detected");
+				}
+
+				@Override
+				public void exceptionOccurred(Connection conn, Exception exp) {
+					logger.info("NATS connection exception occurred", exp);
+				}
+
+				@Override
+				public void errorOccurred(Connection conn, String error) {
+					logger.info("NATS connection error occurred " + error);
+				}
+			});
 
 			nc = Nats.connect(builder.build());
 		}
@@ -96,4 +81,6 @@ public class NatsAutoConfiguration {
 		}
 		return nc;
 	}
+
 }
+
