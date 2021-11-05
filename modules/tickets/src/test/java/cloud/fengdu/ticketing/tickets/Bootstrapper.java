@@ -30,7 +30,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
-import cloud.fengdu.ticketing.eventregistry.NatsTestServer;
+import cloud.fengdu.ticketing.eventstreaming.nats.NatsTestServer;
 import cloud.fengdu.ticketing.tickets.security.JwtConfig;
 import io.nats.client.Options;
 

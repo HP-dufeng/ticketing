@@ -15,10 +15,36 @@
 	<name>event-streaming</name>
 
 	<dependencies>
-		
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-function-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream</artifactId>
+		</dependency>
+		
+		<!-- <dependency>
 			<groupId>cloud.fengdu</groupId>
 			<artifactId>event-registry</artifactId>
+		  </dependency> -->
+		  <!-- <dependency>
+			<groupId>cloud.fengdu</groupId>
+			<artifactId>event-registry-spring-cloud-stream-binder</artifactId>
+		  </dependency> -->
+
+		  <dependency>
+			<groupId>io.nats</groupId>
+			<artifactId>nats-spring-cloud-stream-binder</artifactId>
+		  </dependency>
+
+		  <dependency>
+			<groupId>io.nats</groupId>
+			<artifactId>jnats</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.nats</groupId>
+			<artifactId>jnats-server-runner</artifactId>
 		  </dependency>
 	</dependencies>
 </project>

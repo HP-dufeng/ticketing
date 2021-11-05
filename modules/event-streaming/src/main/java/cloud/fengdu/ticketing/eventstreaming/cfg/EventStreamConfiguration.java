@@ -3,8 +3,8 @@ package cloud.fengdu.ticketing.eventstreaming.cfg;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import cloud.fengdu.ticketing.eventregistry.NatsJsUtils;
 import cloud.fengdu.ticketing.eventstreaming.Subject;
+import cloud.fengdu.ticketing.eventstreaming.nats.NatsJsUtils;
 import io.nats.client.Connection;
 import io.nats.client.ConnectionListener;
 import io.nats.client.Consumer;

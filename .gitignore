@@ -13,3 +13,5 @@ target
 /modules/**/bin
 node_modules
 .next
+.vscode
+.factorypath
