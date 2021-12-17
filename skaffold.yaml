@@ -1,8 +1,8 @@
 apiVersion: skaffold/v2beta24
 kind: Config
 deploy:
-  kustomize:
-    paths:
+  kubectl:
+    manifests:
       - ./k8s
 build:
   local:
@@ -13,11 +13,19 @@ build:
       jib:
         project: modules/auth
         fromImage: docker://eclipse-temurin:17
+        args:
+          - -Psync
+      sync:
+        auto: true
     - image: fengdu/tickets
       context: ./
       jib:
         project: modules/tickets
         fromImage: docker://eclipse-temurin:17
+        args:
+          - -Psync
+      sync:
+        auto: true
     - image: fengdu/frontend
       context: ./modules/frontend
       docker:
